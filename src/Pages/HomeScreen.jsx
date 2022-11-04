@@ -13,7 +13,7 @@ function HomeScreen() {
             <div className=" p-10 text-3xl">Hayvan Sahibi Sayısı</div>
           </div>
 
-          <div className="text-5xl m-10">{ownerRows.length}</div>
+          <div className="text-5xl m-10">0</div>
         </div>
 
         <div className="bg-red-500 m-10 w-1/3">
