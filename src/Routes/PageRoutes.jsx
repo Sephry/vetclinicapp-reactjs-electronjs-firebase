@@ -4,6 +4,7 @@ import AddAnimalScreen from '../Pages/AddAnimalScreen'
 import HomeScreen from '../Pages/HomeScreen'
 import AddPetOwnerScreen from '../Pages/AddPetOwnerScreen'
 import PetOwnerList from '../Pages/PetOwnerList'
+import PetList from '../Pages/PetList'
 
 function PageRoutes() {
   return (
@@ -15,6 +16,7 @@ function PageRoutes() {
 
 
         <Route path='/addAnimal' element={<AddAnimalScreen />} />
+        <Route path='/animalList' element={<PetList />} />
 
         
     </Routes>

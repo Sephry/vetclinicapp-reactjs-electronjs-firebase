@@ -1,5 +1,6 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 import React, { useState } from "react";
+import { createPetOwnerData } from "../Services/createData";
 
 const ownerColumns = [
     { id: "name", label: "Name", minWidth: 100 },
@@ -26,51 +27,24 @@ const ownerColumns = [
     },
 ];
 
-function createData(name, surname, email, tc, telefon, addres) {
-    return { name, surname, email, tc, telefon, addres };
-}
-
 const ownerRows = [
-    createData(
+  createPetOwnerData(
         "İsmail",
         "Kurt",
-        "ismail.kurtf@gmail.com",
         41062252754,
+        "ismail.kurtf@gmail.com",
         "05550165180",
         "Ankara Eryaman"
     ),
-    createData(
+    createPetOwnerData(
         "Hasan",
         "Özdemir",
-        "hasan.özdemir@gmail.com",
         41062252750,
+        "hasan.özdemir@gmail.com",
         "05550165184",
         "Mersin Eryaman"
     ),
-    createData(
-        "Deniz",
-        "Ulucan",
-        "deniz@gmail.com",
-        41062252751,
-        "05550165183",
-        "İstanbul Eryaman"
-    ),
-    createData(
-        "Alperen",
-        "Aydın",
-        "alperen@gmail.com",
-        41062252752,
-        "05550165182",
-        "Çankırı Eryaman"
-    ),
-    createData(
-        "Sinan",
-        "Öztürk",
-        "sinan@gmail.com",
-        41062252753,
-        "05550165110",
-        "Kastamonu Eryaman"
-    ),
+
 ];
 
 function PetOwnerList() {

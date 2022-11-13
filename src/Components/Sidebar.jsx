@@ -27,7 +27,7 @@ const SidebarCom = () => {
             <SubMenu label="Hayvan İşlemleri" className="mx-2 font-medium">
               <MenuItem routerLink={<Link to="/addAnimal" />} className="dark:bg-gray-900">Yeni Hayvan Ekle</MenuItem>
               <MenuItem className="dark:bg-gray-900">Hayvan Ara</MenuItem>
-              <MenuItem className="dark:bg-gray-900">
+              <MenuItem routerLink={<Link to="/animalList" />} className="dark:bg-gray-900">
                 Hayvan Listesi
               </MenuItem>
             </SubMenu>

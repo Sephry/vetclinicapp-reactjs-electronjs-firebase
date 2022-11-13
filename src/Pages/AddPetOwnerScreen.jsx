@@ -1,15 +1,27 @@
 import { Button, FormGroup, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 
 function AddPetOwnerScreen() {
+
   const CustomButton = styled(Button)({
     backgroundColor: "#111827",
     "&:hover": {
       backgroundColor: "#374151",
     },
   });
+
+  const [form, setForm] = useState({
+    isim: "",
+    surname: "",
+    tcno: "",
+    email: "",
+    telno: "",
+    addres: "",
+  });
+
+
 
   return (
     <div className=" flex flex-col h-screen w-screen items-center ">
@@ -24,8 +36,18 @@ function AddPetOwnerScreen() {
               "& .MuiTextField-root": { mx: 2.5, my: 2.5, width: "25ch" },
             }}
           >
-            <TextField id="outlined-basic" label="İsim" variant="outlined" />
-            <TextField id="outlined-basic" label="Soyisim" variant="outlined" />
+            <TextField
+              id="outlined-basic"
+              name="isim"
+              label="İsim"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-basic"
+              name="surname"
+              label="Soyisim"
+              variant="outlined"
+            />
           </Box>
 
           <Box
@@ -36,6 +58,7 @@ function AddPetOwnerScreen() {
           >
             <TextField
               id="outlined-basic"
+              name="tcno"
               label="TC Kimlik Numarası"
               type="number"
               variant="outlined"
@@ -50,6 +73,7 @@ function AddPetOwnerScreen() {
           >
             <TextField
               id="outlined-basic"
+              name="email"
               label="Email"
               variant="outlined"
               type="email"
@@ -64,6 +88,7 @@ function AddPetOwnerScreen() {
           >
             <TextField
               id="outlined-basic"
+              name="telno"
               label="Telefon"
               variant="outlined"
               type="tel"
@@ -78,6 +103,7 @@ function AddPetOwnerScreen() {
           >
             <TextField
               id="outlined-basic"
+              name="addres"
               label="Mahalle, sokak, cadde, ilçe ve il bilgisi giriniz."
               variant="outlined"
               type="text"
