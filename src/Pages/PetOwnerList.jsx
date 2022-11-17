@@ -22,7 +22,6 @@ function PetOwnerList() {
   return (
     <div className="flex flex-col p-10 w-full">
       <Paper className="w-3/5">
-
         <Paper elevation={5} variant="outlined" className="m-5">
           <Accordion
             expanded={expanded === "panel1"}
@@ -47,38 +46,21 @@ function PetOwnerList() {
                     <Typography gutterBottom>Dogum Tarihi :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                    <Typography gutterBottom>TC Kimlik Numarası :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Yaş Grubu :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Hasta Türü :
-                    </Typography>
+                    <Typography gutterBottom>Email :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
                     <Typography component="div" gutterBottom>
-                      Irk :
+                      Telefon Numarası :
                     </Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Cinsiyet :
-                    </Typography>
+                    <Typography gutterBottom>Adres :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Renk :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Ağırlık :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Uyarı Notu :</Typography>
+                    <Typography gutterBottom>Toplam Borç :</Typography>
                   </Paper>
                 </CardContent>
                 <CardActions>
@@ -113,38 +95,21 @@ function PetOwnerList() {
                     <Typography gutterBottom>Dogum Tarihi :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                    <Typography gutterBottom>TC Kimlik Numarası :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Yaş Grubu :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Hasta Türü :
-                    </Typography>
+                    <Typography gutterBottom>Email :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
                     <Typography component="div" gutterBottom>
-                      Irk :
+                      Telefon Numarası :
                     </Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Cinsiyet :
-                    </Typography>
+                    <Typography gutterBottom>Adres :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Renk :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Ağırlık :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Uyarı Notu :</Typography>
+                    <Typography gutterBottom>Toplam Borç :</Typography>
                   </Paper>
                 </CardContent>
                 <CardActions>
@@ -179,38 +144,21 @@ function PetOwnerList() {
                     <Typography gutterBottom>Dogum Tarihi :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                    <Typography gutterBottom>TC Kimlik Numarası :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Yaş Grubu :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Hasta Türü :
-                    </Typography>
+                    <Typography gutterBottom>Email :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
                     <Typography component="div" gutterBottom>
-                      Irk :
+                      Telefon Numarası :
                     </Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Cinsiyet :
-                    </Typography>
+                    <Typography gutterBottom>Adres :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Renk :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Ağırlık :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Uyarı Notu :</Typography>
+                    <Typography gutterBottom>Toplam Borç :</Typography>
                   </Paper>
                 </CardContent>
                 <CardActions>
@@ -245,38 +193,21 @@ function PetOwnerList() {
                     <Typography gutterBottom>Dogum Tarihi :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                    <Typography gutterBottom>TC Kimlik Numarası :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Yaş Grubu :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Hasta Türü :
-                    </Typography>
+                    <Typography gutterBottom>Email :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
                     <Typography component="div" gutterBottom>
-                      Irk :
+                      Telefon Numarası :
                     </Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Cinsiyet :
-                    </Typography>
+                    <Typography gutterBottom>Adres :</Typography>
                   </Paper>
                   <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Renk :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Ağırlık :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Uyarı Notu :</Typography>
+                    <Typography gutterBottom>Toplam Borç :</Typography>
                   </Paper>
                 </CardContent>
                 <CardActions>
@@ -286,7 +217,7 @@ function PetOwnerList() {
             </AccordionDetails>
           </Accordion>
         </Paper>
-
+        
       </Paper>
     </div>
   );
