@@ -1,114 +1,294 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
+import { ExpandMore } from "@mui/icons-material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Card,
+  Paper,
+  Typography,
+  CardContent,
+  CardActions,
+  Button,
+} from "@mui/material";
 import React, { useState } from "react";
-import { createPetOwnerData } from "../Services/createData";
-
-const ownerColumns = [
-    { id: "name", label: "Name", minWidth: 100 },
-    { id: "surname", label: "Surname", minWidth: 100 },
-    {
-        id: "email",
-        label: "Email",
-        minWidth: 170,
-    },
-    {
-        id: "tc",
-        label: "TC Kimlik No",
-        minWidth: 170,
-    },
-    {
-        id: "telefon",
-        label: "Telefon No",
-        minWidth: 170,
-    },
-    {
-        id: "addres",
-        label: "Adres",
-        minWidth: 170,
-    },
-];
-
-const ownerRows = [
-  createPetOwnerData(
-        "İsmail",
-        "Kurt",
-        41062252754,
-        "ismail.kurtf@gmail.com",
-        "05550165180",
-        "Ankara Eryaman"
-    ),
-    createPetOwnerData(
-        "Hasan",
-        "Özdemir",
-        41062252750,
-        "hasan.özdemir@gmail.com",
-        "05550165184",
-        "Mersin Eryaman"
-    ),
-
-];
 
 function PetOwnerList() {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [expanded, setExpanded] = useState(false);
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
   };
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden", m: 10 }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {ownerColumns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {ownerRows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {ownerColumns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={ownerRows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
+    <div className="flex flex-col p-10 w-full">
+      <Paper className="w-3/5">
+
+        <Paper elevation={5} variant="outlined" className="m-5">
+          <Accordion
+            expanded={expanded === "panel1"}
+            onChange={handleChange("panel1")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMore />}
+              aria-controls="panel1bh-content"
+              id="panel1bh-header"
+            >
+              <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                İsmail Kurt
+              </Typography>
+              <Typography sx={{ color: "text.secondary" }}>
+                Kuş Fıstık
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Yaş Grubu :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Hasta Türü :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Irk :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Cinsiyet :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Renk :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Ağırlık :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Uyarı Notu :</Typography>
+                  </Paper>
+                </CardContent>
+                <CardActions>
+                  <Button size="small">Düzenle</Button>
+                </CardActions>
+              </Card>
+            </AccordionDetails>
+          </Accordion>
+        </Paper>
+
+        <Paper elevation={5} variant="outlined" className="m-5">
+          <Accordion
+            expanded={expanded === "panel2"}
+            onChange={handleChange("panel2")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMore />}
+              aria-controls="panel2bh-content"
+              id="panel2bh-header"
+            >
+              <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                Sinan Öztürk
+              </Typography>
+              <Typography sx={{ color: "text.secondary" }}>
+                Fındık Kedi
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Yaş Grubu :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Hasta Türü :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Irk :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Cinsiyet :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Renk :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Ağırlık :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Uyarı Notu :</Typography>
+                  </Paper>
+                </CardContent>
+                <CardActions>
+                  <Button size="small">Düzenle</Button>
+                </CardActions>
+              </Card>
+            </AccordionDetails>
+          </Accordion>
+        </Paper>
+
+        <Paper elevation={5} variant="outlined" className="m-5">
+          <Accordion
+            expanded={expanded === "panel3"}
+            onChange={handleChange("panel3")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMore />}
+              aria-controls="panel3h-content"
+              id="panel3bh-header"
+            >
+              <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                Deniz Ulucan
+              </Typography>
+              <Typography sx={{ color: "text.secondary" }}>
+                Tekir Köpek
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Yaş Grubu :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Hasta Türü :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Irk :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Cinsiyet :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Renk :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Ağırlık :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Uyarı Notu :</Typography>
+                  </Paper>
+                </CardContent>
+                <CardActions>
+                  <Button size="small">Düzenle</Button>
+                </CardActions>
+              </Card>
+            </AccordionDetails>
+          </Accordion>
+        </Paper>
+
+        <Paper elevation={5} variant="outlined" className="m-5">
+          <Accordion
+            expanded={expanded === "pane4"}
+            onChange={handleChange("pane4")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMore />}
+              aria-controls="panel4bh-content"
+              id="panel4bh-header"
+            >
+              <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                Alperen Aydın
+              </Typography>
+              <Typography sx={{ color: "text.secondary" }}>
+                Tekir Köpek
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Dogum Tarihi :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Yaş Grubu :</Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Hasta Türü :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Irk :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Cinsiyet :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Renk :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography component="div" gutterBottom>
+                      Ağırlık :
+                    </Typography>
+                  </Paper>
+                  <Paper elevation={3} variant="outlined" className="m-3">
+                    <Typography gutterBottom>Uyarı Notu :</Typography>
+                  </Paper>
+                </CardContent>
+                <CardActions>
+                  <Button size="small">Düzenle</Button>
+                </CardActions>
+              </Card>
+            </AccordionDetails>
+          </Accordion>
+        </Paper>
+
+      </Paper>
+    </div>
   );
 }
 

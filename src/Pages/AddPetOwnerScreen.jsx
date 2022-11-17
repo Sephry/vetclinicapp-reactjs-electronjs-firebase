@@ -3,8 +3,10 @@ import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 
-function AddPetOwnerScreen() {
+import { database } from "../Services/firebase";
+import { ref, push, child, update } from "firebase/database";
 
+function AddPetOwnerScreen() {
   const CustomButton = styled(Button)({
     backgroundColor: "#111827",
     "&:hover": {
@@ -12,16 +14,49 @@ function AddPetOwnerScreen() {
     },
   });
 
-  const [form, setForm] = useState({
-    isim: "",
-    surname: "",
-    tcno: "",
-    email: "",
-    telno: "",
-    addres: "",
-  });
+  const [name, setName] = useState(null);
+  const [surname, setSurname] = useState(null);
+  const [tcno, setTcno] = useState(null);
+  const [telno, setTelno] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [address, setAddress] = useState(null);
 
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    if (id === "name") {
+      setName(value);
+    }
+    if (id === "surname") {
+      setSurname(value);
+    }
+    if (id === "email") {
+      setEmail(value);
+    }
+    if (id === "tcno") {
+      setTcno(value);
+    }
+    if (id === "telno") {
+      setTelno(value);
+    }
+    if (id === "address") {
+      setAddress(value);
+    }
+  };
 
+  const handleSubmit = () => {
+    let obj = {
+      name: name,
+      surname: surname,
+      tcno: tcno,
+      email: email,
+      telno: telno,
+      address: address,
+    };
+    const newPostKey = push(child(ref(database), "posts"),"petOwner").key;
+    const updates = {};
+    updates["/" + newPostKey] = obj;
+    return update(ref(database), updates);
+  };
 
   return (
     <div className=" flex flex-col h-screen w-screen items-center ">
@@ -37,16 +72,20 @@ function AddPetOwnerScreen() {
             }}
           >
             <TextField
-              id="outlined-basic"
+              id="name"
               name="isim"
               label="İsim"
               variant="outlined"
+              value={name}
+              onChange={(e) => handleInputChange(e)}
             />
             <TextField
-              id="outlined-basic"
+              id="surname"
               name="surname"
               label="Soyisim"
               variant="outlined"
+              value={surname}
+              onChange={(e) => handleInputChange(e)}
             />
           </Box>
 
@@ -57,11 +96,13 @@ function AddPetOwnerScreen() {
             }}
           >
             <TextField
-              id="outlined-basic"
+              id="tcno"
               name="tcno"
               label="TC Kimlik Numarası"
               type="number"
               variant="outlined"
+              value={tcno}
+              onChange={(e) => handleInputChange(e)}
             />
           </Box>
 
@@ -72,11 +113,13 @@ function AddPetOwnerScreen() {
             }}
           >
             <TextField
-              id="outlined-basic"
+              id="email"
               name="email"
               label="Email"
               variant="outlined"
               type="email"
+              value={email}
+              onChange={(e) => handleInputChange(e)}
             />
           </Box>
 
@@ -87,11 +130,13 @@ function AddPetOwnerScreen() {
             }}
           >
             <TextField
-              id="outlined-basic"
+              id="telno"
               name="telno"
               label="Telefon"
               variant="outlined"
               type="tel"
+              value={telno}
+              onChange={(e) => handleInputChange(e)}
             />
           </Box>
 
@@ -102,17 +147,24 @@ function AddPetOwnerScreen() {
             }}
           >
             <TextField
-              id="outlined-basic"
-              name="addres"
+              id="address"
+              name="address"
               label="Mahalle, sokak, cadde, ilçe ve il bilgisi giriniz."
               variant="outlined"
               type="text"
               multiline
               rows={3}
+              value={address}
+              onChange={(e) => handleInputChange(e)}
             />
           </Box>
 
-          <CustomButton variant="contained" size="large">
+          <CustomButton
+            variant="contained"
+            size="large"
+            type="submit"
+            onClick={() => handleSubmit()}
+          >
             Kaydet
           </CustomButton>
         </div>

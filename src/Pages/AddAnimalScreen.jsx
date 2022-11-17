@@ -1,18 +1,15 @@
 import { Button, FormGroup, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React from "react";
 import { styled } from "@mui/material/styles";
 
 function AddAnimalScreen() {
-
-  
   const CustomButton = styled(Button)({
     backgroundColor: "#111827",
     "&:hover": {
       backgroundColor: "#374151",
     },
   });
-
 
   return (
     <div className=" flex flex-col h-screen w-screen items-center ">
@@ -78,7 +75,7 @@ function AddAnimalScreen() {
         </div>
       </FormGroup>
     </div>
-  )
+  );
 }
 
-export default AddAnimalScreen
+export default AddAnimalScreen;
