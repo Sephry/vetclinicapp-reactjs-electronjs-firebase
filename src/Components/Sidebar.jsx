@@ -6,28 +6,45 @@ const SidebarCom = () => {
   return (
     <Sidebar className="transition-colors text-gray-400 duration-300 dark:hover:text-gray-200 ">
       <div class="fixed flex flex-col w-64 h-screen px-4 py-8  border-r  dark:border-gray-700 dark:bg-gray-900">
-        <Link to="/" class="text-3xl font-semibold text-gray-800 dark:text-white">
+        <Link
+          to="/"
+          class="text-3xl font-semibold text-gray-800 dark:text-white"
+        >
           Veterinary App
         </Link>
 
         <div class="flex flex-col justify-between flex-1 mt-6 submenu">
           <Menu>
             <SubMenu label="Müşteri İşlemleri" className="mx-2 font-medium">
-              <MenuItem routerLink={<Link to="/addPetOwnerScreen" />} className="dark:bg-gray-900">
+              <MenuItem
+                routerLink={<Link to="/addPetOwnerScreen" />}
+                className="dark:bg-gray-900"
+              >
                 Hayvan Sahibi Ekle
               </MenuItem>
               <MenuItem className="dark:bg-gray-900">
                 Hayvan Sahibi Ara
               </MenuItem>
-              <MenuItem  routerLink={<Link to="/petOwnerList" />}  className="dark:bg-gray-900">
+              <MenuItem
+                routerLink={<Link to="/petOwnerList" />}
+                className="dark:bg-gray-900"
+              >
                 Hayvan Sahibi Listesi
               </MenuItem>
             </SubMenu>
 
             <SubMenu label="Hayvan İşlemleri" className="mx-2 font-medium">
-              <MenuItem routerLink={<Link to="/addAnimal" />} className="dark:bg-gray-900">Yeni Hayvan Ekle</MenuItem>
+              <MenuItem
+                routerLink={<Link to="/addAnimal" />}
+                className="dark:bg-gray-900"
+              >
+                Yeni Hayvan Ekle
+              </MenuItem>
               <MenuItem className="dark:bg-gray-900">Hayvan Ara</MenuItem>
-              <MenuItem routerLink={<Link to="/animalList" />} className="dark:bg-gray-900">
+              <MenuItem
+                routerLink={<Link to="/animalList" />}
+                className="dark:bg-gray-900"
+              >
                 Hayvan Listesi
               </MenuItem>
             </SubMenu>

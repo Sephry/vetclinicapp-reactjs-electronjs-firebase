@@ -4,7 +4,9 @@ import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 
 import { database } from "../Services/firebase";
-import { ref, push, child, update } from "firebase/database";
+import { ref, set } from "firebase/database";
+import { Link } from "react-router-dom";
+import CustomBreadCrumbs from "../Common/CustomBreadCrumbs";
 
 function AddPetOwnerScreen() {
   const CustomButton = styled(Button)({
@@ -51,15 +53,14 @@ function AddPetOwnerScreen() {
       email: email,
       telno: telno,
       address: address,
+      pets: [""],
     };
-    const newPostKey = push(child(ref(database), "posts"),"petOwner").key;
-    const updates = {};
-    updates["/" + newPostKey] = obj;
-    return update(ref(database), updates);
+    set(ref(database, "petOwner/" + tcno), obj);
   };
 
   return (
     <div className=" flex flex-col h-screen w-screen items-center ">
+      <CustomBreadCrumbs />
       <Typography variant="h3" m={12}>
         Yeni Hayvan Sahibi Ekle
       </Typography>
@@ -159,14 +160,16 @@ function AddPetOwnerScreen() {
             />
           </Box>
 
-          <CustomButton
+          <Link
             variant="contained"
             size="large"
             type="submit"
             onClick={() => handleSubmit()}
+            to={"/addAnimal"}
+
           >
             Kaydet
-          </CustomButton>
+          </Link>
         </div>
       </FormGroup>
     </div>
