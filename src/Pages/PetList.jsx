@@ -42,8 +42,8 @@ function PetList() {
         {pets.map((pet, index) => (
           <Paper elevation={5} variant="outlined" className="m-5">
             <Accordion
-              expanded={expanded === "panel1"}
-              onChange={handleChange("panel1")}
+              expanded={expanded === `panel${index}`}
+              onChange={handleChange(`panel${index}`)}
             >
               <AccordionSummary
                 expandIcon={<ExpandMore />}

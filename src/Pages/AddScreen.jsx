@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { database } from "../Services/firebase";
 import { Box, FormGroup, TextField, Typography } from "@mui/material";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
-import { data } from "autoprefixer";
 import { ref, set } from "firebase/database";
 
 function AddScreen() {
@@ -25,6 +23,7 @@ function AddScreen() {
   const [petColor, setPetColor] = useState(null);
   const [petWeight, setPetWeight] = useState(null);
   const [petHastalıgı, setPetHastalıgı] = useState(null);
+  const [petHastalıkTuru, setPetHastalıkTuru] = useState(null);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -76,6 +75,9 @@ function AddScreen() {
     if (id === "petHastalıgı") {
       setPetHastalıgı(value);
     }
+    if (id === "petHastalıkTuru") {
+      setPetHastalıkTuru(value);
+    }
   };
 
   const handleSubmit = () => {
@@ -96,6 +98,7 @@ function AddScreen() {
         petCinsiyet: petCinsiyet,
         petColor: petColor,
         petWeight: petWeight,
+        petHastalıkTuru: petHastalıkTuru,
         petHastalıgı: petHastalıgı,
       },
     };
@@ -316,11 +319,11 @@ function AddScreen() {
               }}
             >
               <TextField
-                id="petHastalıgı"
-                name="petHastalıgı"
+                id="petHastaTuru"
+                name="petHastaTuru"
                 label="Hayvanın Hastalık Türü"
                 variant="outlined"
-                value={petHastalıgı}
+                value={petHastaTuru}
                 onChange={(e) => handleInputChange(e)}
               />
             </Box>

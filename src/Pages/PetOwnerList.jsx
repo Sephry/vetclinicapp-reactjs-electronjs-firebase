@@ -43,8 +43,8 @@ function PetOwnerList() {
         {petOwners.map((petOwner, index) => (
           <Paper elevation={5} variant="outlined" className="m-5">
             <Accordion
-              expanded={expanded === "panel1"}
-              onChange={handleChange("panel1")}
+              expanded={expanded === `panel${index}`}
+              onChange={handleChange(`panel${index}`)}
             >
               <AccordionSummary
                 expandIcon={<ExpandMore />}
@@ -61,9 +61,6 @@ function PetOwnerList() {
               <AccordionDetails>
                 <Card sx={{ minWidth: 275 }}>
                   <CardContent>
-                    <Paper elevation={3} variant="outlined" className="m-3">
-                      <Typography gutterBottom>Dogum Tarihi : {}</Typography>
-                    </Paper>
                     <Paper elevation={3} variant="outlined" className="m-3">
                       <Typography gutterBottom>
                         TC Kimlik Numarası : {petOwner.tcno}
