@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 
-import { getDatabase } from "firebase/database";
+import { getDatabase } from "firebase/database"
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -12,6 +12,7 @@ import { getDatabase } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyAt7KrwnAw73GIGZjDYDWFv66poER9lino",
   authDomain: "vetclinicapp-72762.firebaseapp.com",
+  databaseURL: "https://vetclinicapp-72762-default-rtdb.firebaseio.com",
   projectId: "vetclinicapp-72762",
   storageBucket: "vetclinicapp-72762.appspot.com",
   messagingSenderId: "129481173577",

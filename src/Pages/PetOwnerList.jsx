@@ -10,7 +10,9 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
-import React, { useState } from "react";
+import { onValue, ref } from "firebase/database";
+import React, { useState, useEffect } from "react";
+import { database } from "../Services/firebase";
 
 function PetOwnerList() {
   const [expanded, setExpanded] = useState(false);
@@ -19,205 +21,81 @@ function PetOwnerList() {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const [petOwners, setPetOwners] = useState([]);
+
+  useEffect(() => {
+    const query = ref(database, "petOwner");
+
+    return onValue(query, (snapshot) => {
+      const data = snapshot.val();
+
+      if (snapshot.exists()) {
+        Object.values(data).map((petOwner) => {
+          setPetOwners((petOwners) => [...petOwners, petOwner]);
+        });
+      }
+    });
+  }, []);
+
   return (
     <div className="flex flex-col p-10 w-full">
       <Paper className="w-3/5">
-        <Paper elevation={5} variant="outlined" className="m-5">
-          <Accordion
-            expanded={expanded === "panel1"}
-            onChange={handleChange("panel1")}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMore />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header"
+        {petOwners.map((petOwner, index) => (
+          <Paper elevation={5} variant="outlined" className="m-5">
+            <Accordion
+              expanded={expanded === "panel1"}
+              onChange={handleChange("panel1")}
             >
-              <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                İsmail Kurt
-              </Typography>
-              <Typography sx={{ color: "text.secondary" }}>
-                Kuş Fıstık
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Card sx={{ minWidth: 275 }}>
-                <CardContent>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Dogum Tarihi :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>TC Kimlik Numarası :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Email :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Telefon Numarası :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Adres :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Toplam Borç :</Typography>
-                  </Paper>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Düzenle</Button>
-                </CardActions>
-              </Card>
-            </AccordionDetails>
-          </Accordion>
-        </Paper>
-
-        <Paper elevation={5} variant="outlined" className="m-5">
-          <Accordion
-            expanded={expanded === "panel2"}
-            onChange={handleChange("panel2")}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMore />}
-              aria-controls="panel2bh-content"
-              id="panel2bh-header"
-            >
-              <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                Sinan Öztürk
-              </Typography>
-              <Typography sx={{ color: "text.secondary" }}>
-                Fındık Kedi
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Card sx={{ minWidth: 275 }}>
-                <CardContent>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Dogum Tarihi :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>TC Kimlik Numarası :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Email :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Telefon Numarası :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Adres :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Toplam Borç :</Typography>
-                  </Paper>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Düzenle</Button>
-                </CardActions>
-              </Card>
-            </AccordionDetails>
-          </Accordion>
-        </Paper>
-
-        <Paper elevation={5} variant="outlined" className="m-5">
-          <Accordion
-            expanded={expanded === "panel3"}
-            onChange={handleChange("panel3")}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMore />}
-              aria-controls="panel3h-content"
-              id="panel3bh-header"
-            >
-              <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                Deniz Ulucan
-              </Typography>
-              <Typography sx={{ color: "text.secondary" }}>
-                Tekir Köpek
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Card sx={{ minWidth: 275 }}>
-                <CardContent>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Dogum Tarihi :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>TC Kimlik Numarası :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Email :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Telefon Numarası :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Adres :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Toplam Borç :</Typography>
-                  </Paper>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Düzenle</Button>
-                </CardActions>
-              </Card>
-            </AccordionDetails>
-          </Accordion>
-        </Paper>
-
-        <Paper elevation={5} variant="outlined" className="m-5">
-          <Accordion
-            expanded={expanded === "pane4"}
-            onChange={handleChange("pane4")}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMore />}
-              aria-controls="panel4bh-content"
-              id="panel4bh-header"
-            >
-              <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                Alperen Aydın
-              </Typography>
-              <Typography sx={{ color: "text.secondary" }}>
-                Tekir Köpek
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Card sx={{ minWidth: 275 }}>
-                <CardContent>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Dogum Tarihi :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>TC Kimlik Numarası :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Email :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography component="div" gutterBottom>
-                      Telefon Numarası :
-                    </Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Adres :</Typography>
-                  </Paper>
-                  <Paper elevation={3} variant="outlined" className="m-3">
-                    <Typography gutterBottom>Toplam Borç :</Typography>
-                  </Paper>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Düzenle</Button>
-                </CardActions>
-              </Card>
-            </AccordionDetails>
-          </Accordion>
-        </Paper>
-        
+              <AccordionSummary
+                expandIcon={<ExpandMore />}
+                aria-controls="panel1bh-content"
+                id="panel1bh-header"
+              >
+                <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                  {petOwner.name} {petOwner.surname}
+                </Typography>
+                <Typography sx={{ color: "text.secondary" }}>
+                  {petOwner.pets.petCins} {petOwner.pets.petName}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Card sx={{ minWidth: 275 }}>
+                  <CardContent>
+                    <Paper elevation={3} variant="outlined" className="m-3">
+                      <Typography gutterBottom>Dogum Tarihi : {}</Typography>
+                    </Paper>
+                    <Paper elevation={3} variant="outlined" className="m-3">
+                      <Typography gutterBottom>
+                        TC Kimlik Numarası : {petOwner.tcno}
+                      </Typography>
+                    </Paper>
+                    <Paper elevation={3} variant="outlined" className="m-3">
+                      <Typography gutterBottom>
+                        Email : {petOwner.email}
+                      </Typography>
+                    </Paper>
+                    <Paper elevation={3} variant="outlined" className="m-3">
+                      <Typography component="div" gutterBottom>
+                        Telefon Numarası : {petOwner.telno}
+                      </Typography>
+                    </Paper>
+                    <Paper elevation={3} variant="outlined" className="m-3">
+                      <Typography gutterBottom>
+                        Adress : {petOwner.address}
+                      </Typography>
+                    </Paper>
+                    <Paper elevation={3} variant="outlined" className="m-3">
+                      <Typography gutterBottom>Toplam Borç :</Typography>
+                    </Paper>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small">Düzenle</Button>
+                  </CardActions>
+                </Card>
+              </AccordionDetails>
+            </Accordion>
+          </Paper>
+        ))}
       </Paper>
     </div>
   );
